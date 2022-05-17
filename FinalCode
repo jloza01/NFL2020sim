@@ -1,0 +1,470 @@
+import tkinter as tk
+
+#create window
+win = tk.Tk()
+win.title("NFL Mock Draft")
+
+#creating Player class
+class Player:
+  def __init__(self, n, pos, py, ry, td, s, i):
+    self.name = n #creates the name attribute as a string
+    self.position = pos #creates the position attribute as a str
+    self.passyards = py #creates the passing yards attribute
+    self.runyards = ry #creates the running yards attribute
+    self.touchdowns = td #creates the touch down attribute
+    self.sacks = s
+    self.interceptions = i
+
+#gives the user player stats
+  def statslist(self):
+      statlst= [self.name, self.position, self.passyards, self.runyards, self.touchdowns, self.sacks, self.interceptions]
+      return statlst
+
+  def addRYards(self):
+    self.runyards = self.runyards + 10
+    return self.runyards
+    #allows someone to add running yards to an existing player while also updatng runyards
+
+  def addPyards(self):
+    self.passyards = self.passyards + 10
+    return self.passyards
+    #allows someone to add passing yards to an existing Player while updating passyards
+  
+  def addTD(self):
+    self.touchdowns = self.touchdowns + 10
+    return self.touchdowns
+    #allows user to add tds to an existing player
+  def addSacks(self):
+    self.sacks += 1
+    return self.sacks
+  def addInts(self):
+    self.interceptions += 1
+    return self.interceptions
+
+  def stats(self):
+    return ("Name: "+ self.name + "\n"
+            "Position: " + self.position + "\n"
+
+          )
+
+
+
+#createing player objects
+
+P1 = Player("Trevor Lawrence", "QB", 3153, 203, 32, 0, 0)
+P2 = Player("Zach Wilson", "QB", 3692, 254, 43, 0, 0)
+P3 = Player("Trey Lance", "QB", 2786, 1100, 42 , 0, 0)
+P4 = Player("Kyle Pitts", "TE", 770, 0, 12, 0, 0)
+P5 = Player("Ja'Marr Chase", "WR", 1780, 5, 20, 0, 0)
+P6 = Player("Jaylen Waddle", "WR", 591, 12, 4, 0, 0)
+P7 = Player("Penei Sewell", "OT", 0, 0, 0, 0, 0)
+P8 = Player("Jaycee Horn", "CB", 0, 0, 0, 3, 2)
+P9 = Player("Pat Surtain II", "CB", 0, 0, 1, 0, 1)
+P10 = Player("DeVonta Smith", "WR", 1856, 6, 24, 0, 0)
+P11 = Player("Justin Fields", "QB", 2100, 383, 27, 0, 0)
+P12 = Player("Micah Parsons", "LB", 0, 0, 0, 5, 0)
+P13 = Player("Rashawn Slater", "OT", 0, 0, 0, 0, 0)
+P14 = Player("Alijah Vera-Tucker", "OG", 0, 0, 0, 0, 0)
+P15 = Player("Mac Jones", "QB", 4500, 14, 42, 0, 0)
+P16 = Player("Zaven Colins", "LB", 0, 0, 2, 4, 4)
+P17 = Player("Alex Leatherwood", "OT", 0, 0, 0, 0, 0)
+P18 = Player("Jaelan Phillips", "EDGE", 0, 0, 0, 8, 1)
+P19 = Player("Jamin Davis", "LB", 3153, 203, 32, 0, 0)
+P20 = Player("Kadarius Toney", "WR", 984, 161, 11, 0, 0)
+P21 = Player("Kwity Paye", "EDGE", 0, 0, 0, 2, 0)
+P22 = Player("Caleb Farley", "CB", 0, 0, 1, 0, 4)
+P23 = Player("Christian Darrisaw", "OT", 0, 0, 0, 0, 0)
+P24 = Player("Najee Harris", "RB", 425, 1466, 30, 0, 0)
+P25 = Player("Travis Etienne", "RB", 588, 914, 16, 0, 0)
+P26 = Player("Greg Newsome II", "CB", 0, 0, 0, 0, 1)
+P27 = Player("Rashod Bateman", "WR", 472, 0, 2, 0, 0)
+P28 = Player("Payton Turner", "DE", 0, 0, 0, 10, 0)
+P29 = Player("Eric Stokes", "CB", 0, 0, 2, 0, 4)
+P30 = Player("Greg Rousseau", "EDGE", 0, 0, 0, 15, 0)
+P31 = Player("Odafe Oweh", "EDGE", 0, 0, 0, 5, 2)
+P32 = Player("Joe Tryon", "EDGE", 0, 0, 0, 8, 0)
+
+
+#list of players for drobdown box
+pnlist = [
+  P1.name,
+  P2.name, 
+  P3.name,
+  P4.name,
+  P5.name,
+  P6.name,
+  P7.name,
+  P8.name,
+  P9.name,
+  P10.name,
+  P11.name,
+  P12.name,
+  P13.name,
+  P14.name,
+  P15.name,
+  P16.name,
+  P17.name,
+  P18.name,
+  P19.name,
+  P20.name,
+  P21.name,
+  P22.name,
+  P23.name,
+  P24.name,
+  P25.name,
+  P26.name,
+  P27.name,
+  P28.name,
+  P29.name,
+  P30.name,
+  P31.name,
+  P32.name
+]
+
+playerDic = { P1.name: P1.statslist(),
+  P2.name: P2.statslist(),
+  P3.name: P3.statslist(),
+  P4.name: P4.statslist(),
+  P5.name: P5.statslist(),
+  P6.name: P6.statslist(),
+  P7.name: P7.statslist(),
+  P8.name: P8.statslist(),
+  P9.name: P9.statslist(),
+  P10.name: P10.statslist(),
+  P11.name: P11.statslist(),
+  P12.name: P12.statslist(),
+  P13.name: P13.statslist(),
+  P14.name: P14.statslist(),
+  P15.name: P15.statslist(),
+  P16.name: P16.statslist(),
+  P17.name: P17.statslist(),
+  P18.name: P18.statslist(),
+  P19.name: P19.statslist(),
+  P20.name: P20.statslist(),
+  P21.name: P21.statslist(),
+  P22.name: P22.statslist(),
+  P23.name: P23.statslist(),
+  P24.name: P24.statslist(),
+  P25.name: P25.statslist(),
+  P26.name: P26.statslist(),
+  P27.name: P27.statslist(),
+  P28.name: P28.statslist(),
+  P29.name: P29.statslist(),
+  P30.name: P30.statslist(),
+  P31.name: P31.statslist(),
+  P32.name: P32.statslist()
+  }
+
+
+
+
+#creating team class
+class Team:
+  def __init__(self,n,ap, pn):
+    self.name = n
+    self.amountplayers = ap 
+    self.playernames = pn #emptylist
+    self.passyards = 0
+    self.runyards = 0
+    self.sacks = 0
+    self.interceptions = 0
+    
+ # def addPtoTeam(self,player):
+     # sel
+      
+      
+
+  #add players to a team and tell the user if they have room for more
+  #def pyards(self):
+    #global playerDic
+    #for x in p
+   # playerstats= playerDic[self.playernames[x]]
+   # ppy= playerstats[2]
+    
+    
+      
+      
+
+
+#Making team objects
+t1 = Team("Jaguars",0,[])
+t2 = Team("Jets",0,[])
+t3 = Team("Texans",0,[])
+t4 = Team("Falcons",0,[])
+t5 = Team("Bengals",0,[])
+t6 = Team("Eagles",0,[])
+t7 = Team("Lions",0,[])
+t8 = Team("Panthers",0,[])
+t9 = Team("Broncos",0,[])
+t10 = Team("Cowboys",0,[])
+t11 = Team("Giants",0,[])
+t12 = Team("49ers",0,[])
+t13 = Team("Chargers",0,[])
+t14 = Team("Vikings",0,[])
+t15 = Team("Patriots",0,[])
+t16 = Team("Cardinals",0,[])
+t17 = Team("Raiders",0,[])
+t18 = Team("Dolphins",0,[])
+t19 = Team("Washington Football Team",0,[])
+t20 = Team("Bears",0,[])
+t21 = Team("Colts",0,[])
+t22 = Team("Titans",0,[])
+t23 = Team("Seahawks",0,[])
+t24 = Team("Steelers",0,[])
+t25 = Team("Rams",0,[])
+t26 = Team("Browns",0,[])
+t27 = Team("Ravens",0,[])
+t28 = Team("Saints",0,[])
+t29 = Team("Packers",0,[])
+t30 = Team("Bills",0,[])
+t31 = Team("Chiefs",0,[])
+t32 = Team("Buccaneers",0,[])
+#making list of teams
+teamlist = [
+  t1,
+  t2,
+  t3,
+  t4,
+  t5,
+  t6,
+  t7,
+  t8,
+  t9,
+  t10,
+  t11,
+  t12,
+  t13,
+  t14,
+  t15,
+  t16,
+  t17,
+  t18,
+  t19,
+  t20,
+  t21,
+  t22,
+  t23,
+  t24,
+  t25,
+  t26,
+  t27,
+  t28,
+  t29,
+  t30,
+  t31,
+  t32,
+]
+#team list for drop down box
+teamnamelst = []
+for team in teamlist:
+    teamnamelst.append(team.name)
+test = 0
+
+pstattxt = tk.Text(win,height= 1, width = 50, font=('Helvetica', 12) )
+def pstats():
+    global variable, playerDic, pnlist,test, pstatxt
+
+    if test== 0:
+      pstattxt.insert(tk.END, playerDic[variable.get()])
+      pstattxt.grid(row = 1,column = 4)
+      test+=1
+    else:
+      pstattxt.delete('1.0',tk.END)
+      
+      pstattxt.insert(tk.END, playerDic[variable.get()])
+      pstattxt.grid(row = 1,column = 4)
+     
+      
+    
+
+
+#creates Team class object with information from entry boxes
+def customplayer():
+  global variable, opt, pnlist
+
+  def createplayer():
+    a = T2.get()
+    b = T3.get()
+    c = T4.get()
+    d = T5.get()
+    e = T6.get()
+    f = T7.get()
+    g = T8.get()
+    newp = Player(a, b, c, d, e, f, g)
+    x = Player(a,b,c,d,e,f,g)
+    pnlist.append(a)
+    playerDic[a] = x.stats()
+    variable.set(pnlist[0])
+    opt.destroy()
+    updateOpt = tk.OptionMenu(win, variable, *pnlist).grid(row = 1, column = 2)
+  
+  newWin= tk.Toplevel(win)
+  alabel = tk.Label(newWin, text = "player name:").grid(row = 2, column = 6)
+  blabel = tk.Label(newWin, text = "position:").grid(row = 3, column = 6)
+  clabel = tk.Label(newWin, text = "pass yards:").grid(row = 4, column = 6)
+  dlabel = tk.Label(newWin, text = "run yards:").grid(row = 5, column = 6)
+  elabel = tk.Label(newWin, text = "touchdowns:").grid(row = 6, column = 6)
+  flabel = tk.Label(newWin, text = "sacks:").grid(row = 7, column = 6)
+  glabel = tk.Label(newWin, text = "interceptions:").grid(row = 8, column = 6)
+  cplayerbutton = tk.Button( newWin, text = "Create New Player", command = createplayer).grid (row = 9, column = 6)
+  
+
+        #creating entry boxes for new player information
+  T2 = tk.Entry(newWin)
+  T2.grid(row = 2, column = 7)
+  T3 = tk.Entry(newWin)
+  T3.grid(row = 3, column = 7)
+  T4 = tk.Entry(newWin)
+  T4.grid(row = 4, column = 7)
+  T5 = tk.Entry(newWin)
+  T5.grid(row = 5, column = 7)
+  T6 = tk.Entry(newWin)
+  T6.grid(row = 6, column = 7)
+  T7 = tk.Entry(newWin)
+  T7.grid(row = 7, column = 7)
+  T8 = tk.Entry(newWin)
+  T8.grid(row = 8, column = 7)
+
+  
+  a = T2.get()
+  b = T3.get()
+  c = T4.get()
+  d = T5.get()
+  e = T6.get()
+  f = T7.get()
+  g = T8.get()
+  newp = Player(a, b, c, d, e, f, g)
+  x = Player(a,b,c,d,e,f,g)
+  pnlist.append(a)
+  playerDic[a] = x.statslist()
+  variable.set(pnlist[0])
+  opt.destroy()
+  updateOpt = tk.OptionMenu(win, variable, *pnlist).grid(row = 1, column = 2)
+  
+  
+  
+  
+  
+CustPlayerButton = tk.Button(win, text = "Create a player:", command = customplayer).grid(row = 1, column = 10) 
+
+
+
+
+#creating dropdown box with players
+variable = tk.StringVar(win)
+variable.set("Player")
+opt = tk.OptionMenu(win,variable, *pnlist)
+opt.config(width = 20, font = ('Helvetica', 12))
+opt.grid(row= 1, column = 2)
+
+
+labelTest = tk.Label(text="", font=('Helvetica', 12), fg='red')
+labelTest.grid(row = 2, column = 2)
+
+def callback(*args):
+  labelTest.configure(text="The selected item is {}".format(variable.get()))
+
+variable.trace("w", callback)
+
+
+
+#display selected player for every team
+select = True
+acc = 0
+rownum = 2
+colnum = 2
+def Select():
+      global teamlist, variable, opt, acc, select, rownum, playerDic, colnum, pnlist
+      if acc < 32:
+       
+        rownum += 1
+        lst= teamlist[acc].playernames
+        lst.append(variable.get())
+        print(lst)
+        acc += 1
+        playerlabel = tk.Label(win, text = variable.get()).grid(row= rownum, column= colnum)
+    
+        pnlist.remove(variable.get())
+        variable.set(pnlist[0])
+        opt.destroy()
+        updateOpt = tk.OptionMenu(win, variable, *pnlist).grid(row = 1, column = 2)
+        
+        
+      elif acc == 32:
+        acc= 1
+        rownum = 3    
+        
+        
+        lst= teamlist[acc].playernames
+        colnum += 1
+        playerlabel = tk.Label(win, text = variable.get()).grid(row= rownum, column= colnum)
+    
+        lst.append(variable.get())
+        pnlist.remove(variable.get())
+        variable.set(pnlist[0])
+        opt.destroy()
+        updateOpt = tk.OptionMenu(win, variable, *pnlist).grid(row = 1, column = 2)
+        acc +=1
+        
+        
+      elif variable.get()== 'Player':
+        labelTest.configure(text="Please select a player")
+  
+
+#button to lock in player pick for team
+selectButton = tk.Button(win, text= 'Select Player to Team', command = Select)
+selectButton.grid(row = 2, column = 4)
+
+
+
+
+#creating labels for every team
+teamlab = tk.Label(win, text = "Teams:").grid(row = 2, column = 1)
+jaguarslab = tk.Label(win, text = "Jaguars").grid(row = 3, column = 1)
+jetslab = tk.Label(win, text = "Jets").grid(row = 4, column = 1)
+Texanslab = tk.Label(win, text = "Texans").grid(row = 5, column = 1)
+Falconslab = tk.Label(win, text = "Falcons").grid(row = 6, column = 1)
+bengalslab = tk.Label(win, text = "Bengals").grid(row = 7, column = 1)
+eagalslab = tk.Label(win, text = "Eagals").grid(row = 8, column = 1)
+lionslab = tk.Label(win, text = "Lions").grid(row = 9, column = 1)
+pantherslab = tk.Label(win, text = "Panthers").grid(row = 10, column = 1)
+broncoslab = tk.Label(win, text = "Broncos").grid(row = 11, column = 1)
+cowboyslab = tk.Label(win, text = "Cowboys").grid(row = 12, column = 1)
+giantslab = tk.Label(win, text = "Giants").grid(row = 13, column = 1)
+fortyninelab = tk.Label(win, text = "49'ers").grid(row = 14, column = 1)
+chargerslab = tk.Label(win, text = "Chargers").grid(row = 15, column = 1)
+vikingslab = tk.Label(win, text = "Vikings").grid(row = 16, column = 1)
+patriotslab = tk.Label(win, text = "Patriots").grid(row = 17, column = 1)
+cardinalslab = tk.Label(win, text = "Cardinals").grid(row = 18, column = 1)
+raiderslab = tk.Label(win, text = "Raiders").grid(row = 19, column = 1)
+dolphinslab = tk.Label(win, text = "Dolphins").grid(row = 20, column = 1)
+washlab = tk.Label(win, text = "Washington").grid(row = 21, column = 1)
+bearslab = tk.Label(win, text = "Bears").grid(row = 22, column = 1)
+coltslab = tk.Label(win, text = "Colts").grid(row = 23, column = 1)
+titanslab = tk.Label(win, text = "Titans").grid(row = 24, column = 1)
+seahawkslab = tk.Label(win, text = "Seahawks").grid(row = 25, column = 1)
+steelerslab = tk.Label(win, text = "Steelers").grid(row = 26, column = 1)
+ramslab = tk.Label(win, text = "Rams").grid(row = 27, column = 1)
+brownslab = tk.Label(win, text = "Browns").grid(row = 28, column = 1)
+ravenslab = tk.Label(win, text = "Ravens").grid(row = 29, column = 1)
+saintslab = tk.Label(win, text = "Saints").grid(row = 30, column = 1)
+packerslab = tk.Label(win, text = "Packers").grid(row = 31, column = 1)
+billslab = tk.Label(win, text = "Bills").grid(row = 32, column = 1)
+cheifslab = tk.Label(win, text = "Cheifs").grid(row = 33, column = 1)
+buccaneerslab = tk.Label(win, text = "Buccaneers").grid(row = 34, column = 1)
+
+playerlab = tk.Label(win, text = "Players:").grid(row = 2, column = 3)
+
+
+    
+
+
+pstatsbutton= tk.Button(win, text= "Get Player Stats:", command = pstats).grid(row = 1, column = 3)
+
+var = tk.StringVar(win)
+var.set("Teams")
+teammenu= tk.OptionMenu(win,var, *teamnamelst).grid(row= 1, column= 5)
+
+#tstatsbutton = tk.Button(win, text = "Get Team Stats:").grid(row = 1, column = 8)
+
+win.mainloop()
